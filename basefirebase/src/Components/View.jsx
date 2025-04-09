@@ -4,9 +4,11 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { getFireBase } from '../../firebase';
 import {doc , deleteDoc} from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom';
 
 function View() {
 
+  let navigate = useNavigate()
   const [allEmp, setAllEmp] = useState([]);
 
   useEffect(() => {
@@ -32,6 +34,10 @@ function View() {
     getData()
   }
 
+  const onUpdate = (id)=>{
+    navigate('/edit/'+id)
+  }
+
   return (
     <Table striped bordered hover className='w-75 mx-auto'>
       <thead>
@@ -49,7 +55,7 @@ function View() {
               <td>{emp.id}</td>
               <td>{emp.name}</td>
               <td>{emp.age}</td>
-              <td><Button onClick={(e)=>onDelete(e,emp.id)} variant="danger">Delete</Button></td>
+              <td><Button onClick={(e)=>onDelete(e,emp.id)} variant="danger">Delete</Button><Button onClick={()=>onUpdate(emp.id)} variant="primary">Edit</Button></td>
             </tr>
           ))
         }
