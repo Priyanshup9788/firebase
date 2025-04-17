@@ -3,11 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { getFireBase } from '../../firebase';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 function Update() {
 
+  let navigate =useNavigate()
     const [newEmp,setNewEmp]=useState({});
     let id = useParams();
     console.log(id)
@@ -39,6 +40,7 @@ function Update() {
         e.preventDefault()
         console.log(newEmp)
         await updateDoc(doc(getFireBase,"Employee",id.id),newEmp)
+        navigate("/view")
     }
 
   return (

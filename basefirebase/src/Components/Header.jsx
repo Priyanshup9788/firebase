@@ -14,6 +14,13 @@ const Header = () => {
       <Nav.Item>
       <Nav.Link><Link to="/view"> View</Link></Nav.Link>
       </Nav.Item>
+
+      <Nav.Item>
+      <Nav.Link><Link to="/signup"> SignUp</Link></Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+      <Nav.Link><Link to="/signin"> SignIn</Link></Nav.Link>
+      </Nav.Item>
     </Nav>
   )
 }
